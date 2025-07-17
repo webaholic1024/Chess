@@ -1,20 +1,22 @@
 import pygame
 
-pygame.init()
-screen = pygame.display.set_mode((1280, 720))
-clock = pygame.time.Clock()
-running = True
+def run(size:tuple):
+    pygame.init()
+    screen = pygame.display.set_mode(size)
+    clock = pygame.time.Clock()
+    running = True
 
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
 
-    screen.fill("purple")
+        # render
+        pygame.display.flip()
 
-    # render
-    pygame.display.flip()
+        clock.tick(60)  # limits FPS to 60
 
-    clock.tick(60)  # limits FPS to 60
+    pygame.quit()
 
-pygame.quit()
+if __name__ == "__main__":
+    run((1280, 600))
